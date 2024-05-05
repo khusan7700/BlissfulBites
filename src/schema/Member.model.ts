@@ -17,7 +17,7 @@ const memberSchema = new Schema(
 
     memberNick: {
       type: String,
-      index: { unique: true, sparse: true },
+      index: { unique: true, sparse: true }, //bu bizda nick faqat bitta bolishini aytyapmiz
       required: true,
     },
 
@@ -49,7 +49,7 @@ const memberSchema = new Schema(
       default: 0,
     },
   },
-  { timestamps: true }
+  { timestamps: true } //updatedAt, createdAt
 );
 
 export default mongoose.model("Member", memberSchema);
