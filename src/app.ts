@@ -11,12 +11,11 @@ import ConnectMongoDB from "connect-mongodb-session";
 const MongoDBStore = ConnectMongoDB(session);
 const store = new MongoDBStore({
   uri: String(process.env.MONGO_URL),
-  collection: "mySession",
+  collection: "Session",
 });
 
 /** 1-ENTRANCE**/
 const app = express();
-// console.log("__dirname:", __dirname);
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -25,9 +24,9 @@ app.use(morgan(MORGAN_FORMAT));
 /** 2-SESSIONS**/ // middle war sifatida yozamiz
 app.use(
   session({
-    secret: "this is a secret",
+    secret: String(process.env.SESSION_SECRET),
     cookie: {
-      maxAge: 1000 * 3600 * 3, // 3h
+      maxAge: 1000 * 3600 * 6, // 6h
     },
     store: store,
     resave: true,
