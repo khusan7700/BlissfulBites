@@ -17,7 +17,11 @@ routerAdmin.get("/check-me", restaurantController.checkAuthSession);
 
 /** Product */
 
-routerAdmin.get("/products/all", productController.getAllProducts);
+routerAdmin.get(
+  "/products/all",
+  restaurantController.verifyRestaurant, // middle wayda murojat qilyapmiz
+  productController.getAllProducts
+);
 routerAdmin.post("/product/create", productController.createNewProduct);
 routerAdmin.post("/product/:id", productController.updateChosenProduct);
 
