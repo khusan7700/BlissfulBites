@@ -17,7 +17,7 @@ const memberSchema = new Schema(
 
     memberNick: {
       type: String,
-      index: { unique: true, sparse: true }, //bu bizda nick faqat bitta bolishini aytyapmiz
+      index: { unique: true, sparse: true },
       required: true,
     },
 

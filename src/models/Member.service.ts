@@ -1,55 +1,59 @@
-import mongoose, { Schema } from "mongoose";
-import { MemberStatus, MemberType } from "../libs/enums/member.enum";
+import MemberModel from "../schema/Member.model";
+import { LoginInput, Member, MemberInput } from "../libs/types/member";
+import Errors, { HttpCode, Message } from "../libs/Errors";
+import { MemberType } from "../libs/enums/member.enum";
+import * as bcrypt from "bcryptjs";
+class MemberService {
+  private readonly memberModel;
 
-const memberSchema = new Schema(
-  {
-    memberType: {
-      type: String,
-      enum: MemberType,
-      default: MemberType.USER,
-    },
+  constructor() {
+    this.memberModel = MemberModel;
+  }
+  //----------------------------POST SIGNUP--------------------------------------
 
-    memberStatus: {
-      type: String,
-      enum: MemberStatus,
-      default: MemberStatus.ACTIVE,
-    },
+  public async processSignup(input: MemberInput): Promise<Member> {
+    const exist = await this.memberModel
+      .findOne({ memberType: MemberType.RESTAURANT })
+      .exec();
+    if (exist) throw new Errors(HttpCode.BAD_REQUEST, Message.CREATE_FAILED);
 
-    memberNick: {
-      type: String,
-      index: { unique: true, sparse: true },
-      required: true,
-    },
+    const salt = await bcrypt.genSalt();
+    input.memberPassword = await bcrypt.hash(input.memberPassword, salt);
 
-    memberPhone: {
-      type: String,
-      index: { unique: true, sparse: true },
-      required: true,
-    },
+    try {
+      const result = await this.memberModel.create(input);
+      result.memberPassword = "";
+      return result;
+    } catch (err) {
+      throw new Errors(HttpCode.BAD_REQUEST, Message.CREATE_FAILED);
+    }
+  }
+  //----------------------------POST LOGIN--------------------------------------
+  public async processLogin(input: LoginInput): Promise<Member> {
+    const member = await this.memberModel
+      .findOne(
+        { memberNick: input.memberNick },
+        { memberNick: 1, memberPassword: 1 }
+      )
+      .exec();
+    if (!member) throw new Errors(HttpCode.NOT_FOUND, Message.NO_MEMBER_NICK);
 
-    memberPassword: {
-      type: String,
-      select: false,
-      required: true,
-    },
+    const isMatch = await bcrypt.compare(
+      input.memberPassword,
+      member.memberPassword
+    );
 
-    memberAddress: {
-      type: String,
-    },
+    // const isMatch = input.memberPassword === member.memberPassword;
 
-    memberDesc: {
-      type: String,
-    },
+    // console.log("isMatch:", isMatch);
+    if (!isMatch) {
+      throw new Errors(HttpCode.UNAUTHORIZED, Message.WRONG_PASSWORD);
+    }
 
-    memberImage: {
-      type: String,
-    },
-    memberPoints: {
-      type: Number,
-      default: 0,
-    },
-  },
-  { timestamps: true }
-);
+    return await this.memberModel.findById(member._id).exec();
+    // console.log("result:", result);
+    // return result;
+  }
+}
 
-export default mongoose.model("Member", memberSchema);
+export default MemberService;
