@@ -28,7 +28,7 @@ body {
 }
 
 .products-container .nav-item a {
-  color: #e3c08d;
+  color: #ffffff;
 }
 
 .products-container .nav-item a.disabled {
@@ -80,9 +80,7 @@ body {
   margin-top: 20px;
   width: 100%;
   height: auto;
-
-  /* TODO: UNCOMMENT */
-  /*display: none;*/
+  display: none;
   flex-direction: column;
   align-items: center;
 }

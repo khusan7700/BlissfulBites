@@ -10,15 +10,29 @@ body {
   background-image: url(../img/login-page.jpg.webp);
   background-size: cover;
 }
+.home-container {
+  position: relative;
+  width: auto;
+  height: auto;
+  min-width: 100%;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: linear-gradient(
+    -45deg,
+    #1103037c,
+    #2c154477,
+    #011c1aba,
+    #96838380
+  );
+}
 
 .home-container a {
   text-decoration: none;
   color: #000000;
 }
-.home-container a:hover {
-  color: blue;
-  transition: all 0.5s linear;
-}
+
 .home-container .nav-item a {
   color: #ffffff;
 }
