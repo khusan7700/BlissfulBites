@@ -53,10 +53,10 @@ body {
 .text-server {
   position: absolute;
   bottom: 50px;
-  left: 800px;
+  left: 630px;
   color: white;
   font-size: 22px;
-  animation: textAni 1s linear infinite;
+  animation: textAni 2s linear infinite;
 }
 
 @keyframes textAni {

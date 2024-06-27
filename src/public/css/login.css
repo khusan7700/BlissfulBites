@@ -18,6 +18,13 @@ body {
   animation: gradient 15s ease infinite;
   -webkit-animation: gradient 15s ease infinite;
   background-size: 200% 200%;
+  background: linear-gradient(
+    -45deg,
+    #1103037c,
+    #2c154477,
+    #011c1aba,
+    #96838380
+  );
 }
 
 .login-container a {
@@ -40,7 +47,7 @@ body {
 
 .login-container .login-frame:hover {
   background-color: #000000a3;
-  box-shadow: 0px 0px 50px 2px white;
+  box-shadow: 0px 0px 15px 0.2px white;
   transition: all 0.5s linear;
 }
 
