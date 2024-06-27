@@ -64,7 +64,7 @@ memberController.getSignup = (req: Request, res: Response) => {
   }
 };
 
-//-------------------------------verify auth--------------------------------------------
+//-------------------------------verify auth----------cookies----------------------------------
 
 memberController.verifyAuth = async (req: Request, res: Response) => {
   try {
