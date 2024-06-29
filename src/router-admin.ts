@@ -45,7 +45,7 @@ routerAdmin.post(
 routerAdmin.post(
   "/product/:id",
   restaurantController.verifyRestaurant,
-  productController.updateChosenProduct
+  productController.updateChosenProducts
 );
 
 /** ----------------------------------User---------------------------------- */
