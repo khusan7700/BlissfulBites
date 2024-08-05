@@ -1,10 +1,8 @@
-// import moment from "moment";
-//const moment = require('moment); <-- bu common js
-
-//--------------------------------------------------------------------------------
 console.log("Bismillah");
 import dotenv from "dotenv";
-dotenv.config();
+dotenv.config({
+  path: process.env.NODE_ENV === "production" ? ".env.production" : ".env",
+});
 import mongoose from "mongoose";
 import server from "./app";
 
