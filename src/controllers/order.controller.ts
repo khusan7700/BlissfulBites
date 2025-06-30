@@ -11,10 +11,6 @@ const orderService = new OrderService();
 const orderController: T = {};
 
 //-------------------------------create order----------------------
-//-------------------------------create order----------------------
-//-------------------------------create order----------------------
-//-------------------------------create order----------------------
-//-------------------------------create order----------------------
 orderController.createOrder = async (req: ExtendedRequest, res: Response) => {
   try {
     console.log("createOrder");
@@ -27,10 +23,6 @@ orderController.createOrder = async (req: ExtendedRequest, res: Response) => {
     else res.status(Errors.standard.code).json(Errors.standard);
   }
 };
-//-------------------------------create order----------------------
-//-------------------------------create order----------------------
-//-------------------------------create order----------------------
-//-------------------------------create order----------------------
 //-------------------------------create order----------------------
 
 orderController.getMyOrders = async (req: ExtendedRequest, res: Response) => {
@@ -53,10 +45,6 @@ orderController.getMyOrders = async (req: ExtendedRequest, res: Response) => {
   }
 };
 
-//-------------------------------update order----------------------
-//-------------------------------update order----------------------
-//-------------------------------update order----------------------
-//-------------------------------update order----------------------
 //-------------------------------update order----------------------
 
 orderController.updateOrder = async (req: ExtendedRequest, res: Response) => {

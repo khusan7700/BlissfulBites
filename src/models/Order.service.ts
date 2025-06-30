@@ -26,9 +26,6 @@ class OrderService {
     this.memberService = new MemberService();
   }
   //-------------------------------create order----------------------
-  //-------------------------------create order----------------------
-  //-------------------------------create order----------------------
-  //-------------------------------create order----------------------
 
   public async createOrder(
     member: Member,
@@ -56,9 +53,6 @@ class OrderService {
     }
   }
   //-------------------------------record Order Item----------------------
-  //-------------------------------record Order Item----------------------
-  //-------------------------------record Order Item----------------------
-  //-------------------------------record Order Item----------------------
 
   private async recordOrderItem(
     orderId: ObjectId,
@@ -75,9 +69,6 @@ class OrderService {
     console.log("orderItemStatus:", orderItemsState);
   }
   //-------------------------------create order----------------------
-  //-------------------------------create order----------------------
-  //-------------------------------create order----------------------
-  //-------------------------------create order----------------------
 
   public async getMyOrders(
     member: Member,
@@ -93,7 +84,6 @@ class OrderService {
         { $skip: (inquiry.page - 1) * inquiry.limit },
         { $limit: inquiry.limit },
         {
-          //zanjir simon logiclarimiz
           $lookup: {
             from: "orderItems",
             localField: "_id",
@@ -117,9 +107,7 @@ class OrderService {
     if (!result) throw new Errors(HttpCode.NOT_FOUND, Message.NO_DATA_FOUND);
     return result;
   }
-  //-------------------------------update order----------------------
-  //-------------------------------update order----------------------
-  //-------------------------------update order----------------------
+
   //-------------------------------update order----------------------
 
   public async updateOrder(
