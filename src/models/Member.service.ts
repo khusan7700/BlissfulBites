@@ -33,10 +33,16 @@ class MemberService {
   public async signup(input: MemberInput): Promise<Member> {
     const salt = await bcrypt.genSalt();
     input.memberPassword = await bcrypt.hash(input.memberPassword, salt);
+    console.log(
+      "\x1b[33mCREATE new signup memberNick name is ----->\x1b[0m",
+      input.memberNick
+    );
 
     try {
       const result = await this.memberModel.create(input);
       result.memberPassword = "";
+      console.log("Signup process created successfully.");
+
       return result.toJSON();
     } catch (err) {
       console.error("Error, model:signup", err);
@@ -54,6 +60,11 @@ class MemberService {
         { memberNick: 1, memberPassword: 1, memberStatus: 1 }
       )
       .exec();
+    console.log(
+      "\x1b[33mLOGIN memberNick name is ----->\x1b[0m",
+      input.memberNick
+    );
+
     if (!member) throw new Errors(HttpCode.NOT_FOUND, Message.NO_MEMBER_NICK);
     else if (member.memberStatus === MemberStatus.BLOCK) {
       throw new Errors(HttpCode.FORBIDDEN, Message.BLOCKED_USER);
@@ -66,6 +77,7 @@ class MemberService {
     if (!isMatch) {
       throw new Errors(HttpCode.UNAUTHORIZED, Message.WRONG_PASSWORD);
     }
+    console.log("Login process entered successfully.");
 
     return await this.memberModel.findById(member._id).lean().exec();
   }
@@ -142,6 +154,7 @@ class MemberService {
     try {
       const result = await this.memberModel.create(input);
       result.memberPassword = "";
+      console.log("Signup process completed successfully.");
       return result;
     } catch (err) {
       throw new Errors(HttpCode.BAD_REQUEST, Message.CREATE_FAILED);
@@ -176,6 +189,7 @@ class MemberService {
       .exec();
 
     if (!result) throw new Errors(HttpCode.NOT_FOUND, Message.NO_DATA_FOUND);
+    console.log("Login process completed successfully.");
 
     return result;
   }

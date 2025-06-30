@@ -13,7 +13,7 @@ import AuthService from "../models/Auth.service";
 import { AUTH_TIMER } from "../libs/config";
 
 const memberService = new MemberService();
-const authService = new AuthService(); //instins olyapmiz
+const authService = new AuthService();
 
 const memberController: T = {};
 
@@ -58,7 +58,6 @@ memberController.signup = async (req: Request, res: Response) => {
 
 memberController.login = async (req: Request, res: Response) => {
   try {
-    console.log("login");
     const input: LoginInput = req.body,
       result = await memberService.login(input),
       token = await authService.createToken(result);
@@ -87,7 +86,6 @@ memberController.getSignup = (req: Request, res: Response) => {
 
 memberController.logout = (req: ExtendedRequest, res: Response) => {
   try {
-    console.log("logout");
     res.cookie("accessToken", null, { maxAge: 0, httpOnly: true });
     res.status(HttpCode.OK).json({ logout: true });
   } catch (err) {
@@ -104,7 +102,6 @@ memberController.getMemberDetail = async (
   res: Response
 ) => {
   try {
-    console.log("getMemberDetail");
     const result = await memberService.getMemberDetail(req.member);
 
     res.status(HttpCode.OK).json(result);

@@ -2,57 +2,35 @@
 
 <link rel="stylesheet" type="text/css" href="/css/login.css" />
 
-<body>
-  <section>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-  </section>
-  <form class="login-container" action="/admin/login" METHOD="POST">
-    <div class="card"></div>
-    <div class="login-frame">
-      <div class="login-top">
-        <h1>Enter</h1>
-        <div>Go back <a href="/admin" style="color: #6440fb">Home</a></div>
-        <p>
-          Not registered yet?
-          <a href="/admin/signup" style="color: #6440fb">Signup</a>
-        </p>
+<body class="vh-100 overflow-hidden">
+  <div class="body">
+    <form class="login-container" action="/admin/login" method="POST">
+      <h1>Login</h1>
+      <div class="input-group">
+        <label for="restaurant">Restaurant *</label>
+        <input
+          type="text"
+          id="restaurant"
+          name="memberNick"
+          placeholder="Username"
+          required
+        />
       </div>
-      <div class="login-input-frame">
-        <div class="login-input-container">
-          <label>Restaurant *</label>
-          <input
-            type="text"
-            name="memberNick"
-            class="member-nick"
-            placeholder="Username"
-            value=""
-            required
-          />
-        </div>
-        <div class="login-input-container">
-          <label>Password *</label>
-          <input
-            type="password"
-            name="memberPassword"
-            class="member-password"
-            placeholder="Password"
-            value=""
-            required
-          />
-        </div>
+      <div class="input-group">
+        <label for="password">Password *</label>
+        <input
+          type="password"
+          id="password"
+          name="memberPassword"
+          placeholder="Password"
+          required
+        />
       </div>
-      <button class="login-btn btn" name="login" type="submit">Login</button>
-    </div>
-  </form>
+      <button class="login-btn" type="submit">Login</button>
+      <p>Not registered yet? <a href="/admin/signup">Signup</a></p>
+      <p>Go back <a href="/admin">Home</a></p>
+    </form>
+  </div>
 </body>
 
 <%- include('includes/footer') %>

@@ -1,55 +1,79 @@
 <%- include('includes/header') %>
 
 <link rel="stylesheet" type="text/css" href="/css/home.css" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.js"></script>
+<body class="vh-100 overflow-hidden">
+  <!-- navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-transparent">
+    <div class="container">
+      <a class="navbar-brand fs-4" href="#">BlissFull.uz</a>
+      <button
+        class="navbar-toggler shadow-none border-0 background"
+        type="button"
+        data-bs-toggle="offcanvas"
+        data-bs-target="#offcanvasDarkNavbar"
+        aria-controls="offcanvasDarkNavbar"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <!-- sidebar -->
 
-<body>
-  <section>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-  </section>
-  <div class="home-container">
-    <div class="navigation-menu">
-      <ul class="nav justify-content-center">
-        <li class="nav-item" style="cursor: pointer">
-          <a class="nav-link active" href="/admin">Home</a>
-        </li>
-        <% if(!member) { %>
-        <li class="nav-item" style="cursor: pointer">
-          <a class="nav-link" href="/admin/signup">Signup</a>
-        </li>
-        <li class="nav-item" style="cursor: pointer">
-          <a class="nav-link" href="/admin/login">Login</a>
-        </li>
-        <% } else { %>
-        <li class="nav-item" style="cursor: pointer">
-          <a class="nav-link" href="/admin/product/all">Menu</a>
-        </li>
-        <li class="nav-item" style="cursor: pointer">
-          <a class="nav-link" href="/admin/user/all">Users</a>
-        </li>
-        <li
-          class="nav-item"
-          style="cursor: pointer"
-          onclick="return confirm('Do you want to logout?')"
-        >
-          <a class="nav-link" href="/admin/logout">Logout</a>
-        </li>
-        <% } %>
-      </ul>
+      <div
+        class="sidebar offcanvas offcanvas-end text-bg-dark bg-blur"
+        tabindex="-1"
+        id="offcanvasDarkNavbar"
+        aria-labelledby="offcanvasDarkNavbarLabel"
+      >
+      <!-- sidebar header -->
+        <div id="sidebar" class="sidebar offcanvas-header text-white border-bottom">
+          <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Setting</h5>
+          <button
+            type="button"
+            class="btn-close btn-close-white shadow-none"
+            data-bs-dismiss="offcanvas"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="offcanvas-body d-flex flex-row p-4">
+          <ul
+            class="navbar-nav justify-content-center align-items-center fs-5 flex-grow-1 pe-3"
+          >
+            <li class="nav-item"></li>
+
+            <li class="nav-item mx-2">
+              <a class="nav-link" href="/admin">Home</a>
+            </li>
+            <% if(!member) { %>
+            <li class="nav-item mx-2">
+              <a class="nav-link" href="/admin/signup">Signup</a>
+            </li>
+            <li class="nav-item mx-2">
+              <a class="nav-link" href="/admin/login">Login</a>
+            </li>
+            <% } else { %>
+            <li class="nav-item mx-2">
+              <a class="nav-link" href="/admin/product/all">Menu</a>
+            </li>
+
+            <li class="nav-item mx-2">
+              <a class="nav-link" href="/admin/user/all">Users</a>
+            </li>
+            <a
+              class="text-white text-decoration-none px-3 py-0.1 rounded-4"
+              style="background-color: rgb(26, 26, 87)"
+              href="/admin/logout"
+              >Logout</a
+              <% } %>
+          </ul>
+        </div>
+      </div>
     </div>
-
-   <h1 class="text-server" >USE ONLY ADMIN</h1>
-
-  <script type="text/javascript" src="/js/home.js"></script>
+  </nav>
+  <maim>
+    <section class="2-100 vh-100 d-flex flex-column justify-content-center align-items-center text-white fs-1">
+        <h1 style="font-size: 1.3em;">HAVE A NICE</h1>
+        <h1 style="font-size: 1.5em;">Day</h1>
+    </section>
+  </maim>
 </body>
-
 <%- include('includes/footer') %>
