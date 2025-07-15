@@ -1,34 +1,31 @@
-html,
-body {
-  background: url(../img/moon2.webp);
-  background-blend-mode: multiply;
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-
+body {
+  background-image: url(../img/login-page.jpg.webp);
+  background-size: cover;
+}
 .users-container {
   position: relative;
-  min-height: 100vh;
-  padding: 40px 20px;
+  width: auto;
+  height: auto;
+  min-width: 100%;
+  min-height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-family: "Arial", sans-serif;
-  color: white;
+  background: linear-gradient(-45deg, #110303bf, #2c1544, #011c1aba, #968383);
 }
 
 .users-container a {
-  color: #8e8b8b;
   text-decoration: none;
-  transition: color 0.3s ease;
+  color: #000000;
 }
 
 .users-container .nav-item a {
-  color: #8e8b8b;
-}
-.users-container a:hover {
-  color: #0077cc;
+  color: #ffffff;
 }
 
 .users-container .nav-item a.disabled {
@@ -36,40 +33,29 @@ body {
 }
 
 .users-container .navigation-menu {
-  width: auto;
-  height: auto;
-  position: fixed;
-  top: 3%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 24px;
-  font-weight: bold;
-  color: #333;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  position: absolute;
+  z-index: 10000;
+  top: 1%;
+  color: #efefee;
+  font-size: 40px;
+  font-family: monospace;
 }
 
 .users-container .users-frame {
+  position: relative;
+  padding-bottom: 80px;
   width: 100%;
-  max-width: 1200px;
-  margin-top: 80px;
+  height: auto;
+
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  align-items: center;
 }
 
-.board {
-  background: rgba(73, 73, 73, 0.4); /* Qizil rang, lekin shaffof */
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(10px); /* Orqa fonni blur qiladi */
-  -webkit-backdrop-filter: blur(10px); /* Safari uchun */
-  border: 1px solid rgba(255, 255, 255, 0.2); /* Yorqinlik hissi uchun chiroyli border */
+.users-container .users-frame .board {
   position: relative;
   margin-top: 100px;
-  width: auto;
+  width: 1320px;
   height: auto;
   display: flex;
   flex-direction: column;
@@ -87,8 +73,13 @@ body {
 }
 
 .users-container .board .user-table {
-  width: 100%;
-  border-collapse: collapse;
+  position: relative;
+  width: 85%;
+  height: auto;
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .users-container .header-name {
@@ -121,124 +112,115 @@ body {
   color: #4f547b;
 }
 
-.users-container .board .user-table {
-  width: 100%;
-  border-collapse: collapse;
-  table-layout: fixed; /* Ustunlar bir xil o‘lchamda bo‘lsin */
-  word-wrap: break-word; /* Matn to‘g‘ri ajralsin */
-}
-
-.table-responsive {
-  width: 100%;
-  overflow-x: auto;
-}
-
 .users-container table td,
 table th {
-  border: 1px solid #787878;
-  padding: 8px;
   text-align: center;
-  background-color: #454f7c;
-  color: white;
+  vertical-align: middle;
 }
 
-@media (max-width: 768px) {
-  .users-container {
-    padding: 30px 15px;
-  }
+/*------------------star animation------------------*/
+span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 4px;
+  height: 4px;
+  background: #fff;
+  border-radius: 50%;
+  box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.1),
+    0 0 0 8px rgba(255, 255, 255, 0.1), 0 0 20px rgba(255, 255, 255, 1);
+  animation: animate 3s linear infinite;
+}
+span::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 300px;
+  height: 1px;
+  background: linear-gradient(90deg, #fff, transparent);
+}
 
-  .users-container .navigation-menu {
-    top: 5%;
-    font-size: 20px;
-    flex-direction: column;
-    padding: 10px;
-    width: 90%;
+@keyframes animate {
+  0% {
+    transform: rotate(315deg) translateX(0);
+    opacity: 0.7;
   }
-
-  .users-container .nav-item {
-    margin: 5px 0;
+  70% {
+    opacity: 0.7;
   }
-
-  .users-container .users-frame {
-    margin-top: 100px;
-    padding: 0 10px;
-  }
-
-  .board {
-    width: 100%;
-    height: auto;
-    padding: 20px;
-    font-size: 24px;
-  }
-
-  .users-container .board .dishes-table {
-    margin-top: 20px;
-  }
-
-  .users-container .header-name {
-    font-size: 24px;
-  }
-
-  .users-container .spec-select {
-    width: 100%;
-    font-size: 14px;
-  }
-
-  .users-container table td,
-  .users-container table th {
-    padding: 2px;
-    font-size: 14px;
+  100% {
+    transform: rotate(315deg) translateX(-1000px);
+    opacity: 0;
   }
 }
 
-/* iPhone va kichik ekranlar uchun */
-@media (max-width: 600px) {
-  .users-container {
-    padding: 20px 10px;
-  }
-
-  .users-container .navigation-menu {
-    top: 6%;
-    font-size: 18px;
-    width: 100%;
-    flex-direction: column;
-  }
-
-  .users-container .nav-item {
-    margin: 4px 0;
-  }
-
-  .users-container .users-frame {
-    margin-top: 90px;
-    padding: 0 5px;
-  }
-
-  .board {
-    width: 100%;
-    padding: 15px;
-    font-size: 20px;
-  }
-
-  .users-container .header-name {
-    font-size: 20px;
-  }
-
-  .users-container .spec-select {
-    width: 100%;
-    font-size: 13px;
-  }
-
-  .users-container table td,
-  .users-container table th {
-    padding: 1px;
-    font-size: 12px;
-  }
-
-  .users-container .board .dishes-table {
-    overflow-x: auto;
-  }
-
-  .users-container .board .user-table {
-    min-width: 300px;
-  }
+span:nth-child(1) {
+  top: 0;
+  right: 0;
+  animation-delay: 0;
+  animation-duration: 1s;
+}
+span:nth-child(2) {
+  top: 0;
+  right: 80px;
+  left: initial;
+  animation-delay: 0.2s;
+  animation-duration: 3s;
+}
+span:nth-child(3) {
+  top: 80px;
+  right: 0px;
+  left: initial;
+  animation-delay: 0.4s;
+  animation-duration: 2s;
+}
+span:nth-child(4) {
+  top: 0px;
+  right: 180px;
+  left: initial;
+  animation-delay: 0.6s;
+  animation-duration: 1.5s;
+}
+span:nth-child(5) {
+  top: 0px;
+  right: 400px;
+  left: initial;
+  animation-delay: 0.8s;
+  animation-duration: 2.5s;
+}
+span:nth-child(6) {
+  top: 0px;
+  right: 600px;
+  left: initial;
+  animation-delay: 1s;
+  animation-duration: 3s;
+}
+span:nth-child(7) {
+  top: 300px;
+  right: 0px;
+  left: initial;
+  animation-delay: 1.2s;
+  animation-duration: 1.75s;
+}
+span:nth-child(8) {
+  top: 0px;
+  right: 700px;
+  left: initial;
+  animation-delay: 1.4s;
+  animation-duration: 1.25s;
+}
+span:nth-child(9) {
+  top: 0px;
+  right: 1000px;
+  left: initial;
+  animation-delay: 0.75s;
+  animation-duration: 2.25s;
+}
+span:nth-child(10) {
+  top: 0px;
+  right: 450px;
+  left: initial;
+  animation-delay: 2.75s;
+  animation-duration: 2.25s;
 }

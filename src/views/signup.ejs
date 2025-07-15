@@ -3,16 +3,27 @@
 <link rel="stylesheet" type="text/css" href="/css/signup.css" />
 
 <body>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+
   <div class="signup-container">
     <form
-      onsubmit="return validateSignupForm()"
+      onsubmit="return validateSignupFrom()"
       action="/admin/signup"
       method="POST"
       enctype="multipart/form-data"
     >
       <div class="signup-frame" style="width: 650px">
         <div class="signup-top">
-          <span>Signup</span>
+          <h1>Signup</h1>
           <div>Go back <a href="/admin" style="color: #6440fb">Home</a></div>
           <p>
             Already signed up?
@@ -67,9 +78,9 @@
 
         <div class="signup-input-frame">
           <div class="media-frame">
-            <img class="upload-img-frame" src="/img/ImgUser.png" />
-            <span class="media-text">User image</span>
+            <img class="upload-img-frame" src="/img/default.jpeg" />
             <div class="upload-container">
+              <h1 class="media-text">Product image</h1>
               <div
                 class="file-box bs3-primary preview-image"
                 style="margin-top: 25px; display: flex"
@@ -101,7 +112,7 @@
         <input name="memberType" value="RESTAURANT" hidden />
 
         <button class="signup-btn btn" name="signup" type="submit">
-          SIGNUP
+          Signup
         </button>
       </div>
     </form>
