@@ -18,6 +18,7 @@ const authService = new AuthService();
 const memberController: T = {};
 
 //-------------------------------Get Restaurant--------------------------------------------
+//-------------------------------Get Restaurant--------------------------------------------
 
 memberController.getRestaurant = async (req: Request, res: Response) => {
   try {
@@ -99,7 +100,7 @@ memberController.logout = (req: ExtendedRequest, res: Response) => {
 
 memberController.getMemberDetail = async (
   req: ExtendedRequest,
-  res: Response
+  res: Response,
 ) => {
   try {
     const result = await memberService.getMemberDetail(req.member);
@@ -149,7 +150,7 @@ memberController.getTopUsers = async (req: Request, res: Response) => {
 memberController.verifyAuth = async (
   req: ExtendedRequest,
   res: Response,
-  next: NextFunction
+  next: NextFunction,
 ) => {
   try {
     const token = req.cookies["accessToken"];
@@ -169,7 +170,7 @@ memberController.verifyAuth = async (
 memberController.retrieveAuth = async (
   req: ExtendedRequest,
   res: Response,
-  next: NextFunction
+  next: NextFunction,
 ) => {
   try {
     const token = req.cookies["accessToken"];
